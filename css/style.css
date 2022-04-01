@@ -1,0 +1,3549 @@
+@import './assets/fonts.css';
+@import './assets/reset.css';
+
+html, 
+body{
+    height: 100%;
+}
+
+body{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    font-family: Roboto;
+    font-style: normal;
+}
+
+
+
+
+.main{
+    flex: 1 1 auto;
+}
+
+.container{
+    max-width: 1150px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+
+/* header styles */
+.header{
+    padding: 30px 0 15px;
+    box-shadow: rgb(0 0 0 / 8%) 0 1px 12px;
+    background: #fff;
+}
+
+.header.fixed{
+    padding: 10px 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 6;
+
+    animation-name: set__fix;
+    animation-duration: .3s;
+}
+
+@keyframes set__fix {
+    0%{
+        opacity: 0;
+        top: -50px;
+    }
+    100%{
+        opacity: 1;
+        top: 0;
+    }
+}
+
+.header__inner{
+    display: flex;
+    justify-content: flex-end;
+}
+.header__menu-list{
+    display: flex;
+    align-items: center;
+}
+
+.header__menu-list-item{
+    margin-right: 20px;
+}
+
+.header__menu-list-item:last-child{
+    margin-right: 0;
+}
+
+.header__menu-list-link{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #222;
+}
+
+.header__manage-block{
+    display: none;
+}
+
+
+/* rented house gallery styles */
+.rented-house{
+    margin-top: 25px;
+}
+
+.rented-house__main-title{
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.rented-house__title{
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.rented-house__block{
+    padding: 50px 0;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.rented-house__block:last-child{
+    border-bottom: none;
+}
+
+.rented-house__gallery-details{
+    margin-bottom: 25px;
+}
+
+.gallery-details__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gallery-details__items{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right: 30px;
+}
+
+.gallery-details__item{
+    padding-right: 7px;
+    margin-right: 7px;
+    
+
+    position: relative;
+}
+
+.gallery-details__item::after{
+    display: block;
+
+    content: '';
+    position: absolute; 
+
+    width: 2px;
+    height: 2px;
+    background: #000;
+    border-radius: 50%;
+
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+
+.gallery-details__item:last-child{
+    padding-right: 0;
+    margin-right: 0;
+}
+
+.gallery-details__item:last-child::after{
+    display: none;
+}
+
+.gallery-details__rating{
+    display: flex;
+    align-items: center;
+}
+
+.gallery-details__rating-icon svg path{
+    fill: #ff385c;
+}
+
+.gallery-details__rating-icon{
+    margin-right: 5px;
+}
+
+.gallery-details__rating-value{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #222;
+    padding-top: 1px;
+}
+
+.gallery-details__reviews-button{
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    color: #222;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.gallery-details__location-button{
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    color: #717171;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: left;
+}
+
+.gallery-details__manage-buttons{
+    display: flex;
+    align-items: center;
+}
+
+.gallery-details__manage-button{
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    color: #222;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.gallery-details__manage-button:last-child{
+    margin-right: 0;
+}
+
+.gallery-details__manage-button-icon{
+    margin-right: 8px;
+}
+
+
+.rented-house__gallery{
+    position: relative;
+}
+
+.rented-house__gallery-items{
+    min-height: 500px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 8px;
+}
+
+.rented-house__gallery-item{
+    position: relative;
+    cursor: pointer;
+}
+
+.rented-house__gallery-item:hover::before{
+    opacity: 1;
+    transition: opacity .4s ease;
+}
+
+.rented-house__gallery-item::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+
+    opacity: 0;
+    transition: all .4s ease;
+}
+
+.rented-house__gallery-item:nth-child(1)::before{
+    border-radius: 10px 0 0 10px;
+}
+
+.rented-house__gallery-item:nth-child(3)::before{
+    border-radius: 0 10px 10px 0;
+}
+
+.rented-house__gallery-item:nth-child(5)::before{
+    border-radius: 0 10px 10px 0;
+}
+
+.rented-house__gallery-item:nth-child(1){
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.rented-house__gallery-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rented-house__gallery-item:nth-child(1) img {
+    border-radius: 10px 0 0 10px;
+}
+
+.rented-house__gallery-item:nth-child(3) img {
+    border-radius: 0 10px 10px 0;
+}
+
+.rented-house__gallery-item:nth-child(5) img {
+    border-radius: 0 10px 10px 0;
+}
+
+
+.rented-house__gallery-button{
+    display: flex;
+    align-items: center;
+
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    color: #222;
+
+    border: 0.5px solid #000;
+    padding: 7px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    position: absolute;
+    z-index: 2;
+    bottom: 20px;
+    right: 20px;
+}
+
+.rented-house__gallery-button-icon{
+    margin-right: 8px;
+}
+
+
+
+
+
+/* rented house info styles */
+.rented-house__info{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.rented-house__details{
+    max-width: 650px;
+    width: 100%;
+
+    margin-right: 50px;
+}
+
+.rented-house__details-block{
+    padding: 40px 0;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.rented-house__details-block:first-child{
+    padding-top: 0;
+}
+
+.rented-house__details-block:last-child{
+    padding-bottom: 0;
+    border: none;
+}
+
+.common-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rented-house__title{
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.common-info__content{
+    margin-right: 30px;
+}
+
+.common-info__items{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.common-info__item{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #222;
+
+    position: relative;
+    margin-right: 7px;
+    padding-right: 9px;
+}
+
+.common-info__item::after{
+    display: block;
+
+    content: '';
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+    background: #000;
+
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+
+.common-info__item:last-child::after{
+    display: none;
+}
+
+.common-info__item:last-child{
+    margin-right: 0;
+}
+
+.common-info__image-wrap{
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+}
+
+.common-info__owner-image{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.triggers__item{
+    margin-bottom: 20px;
+    padding-left: 40px;
+
+    position: relative;
+}
+
+.triggers__item::before{
+    position: absolute;
+
+    width: 24px;
+    height: 24px;
+
+    left: 0;
+    top: 0;
+}
+
+.triggers__item:nth-child(1)::before{
+    content: url('../images/info-block/triggers-icons/reward-icon.svg');
+}
+.triggers__item:nth-child(2)::before{
+    content: url('../images/info-block/triggers-icons/location.svg');
+}
+.triggers__item:nth-child(3)::before{
+    content: url('../images/info-block/triggers-icons/key.svg');
+}
+
+.triggers__item:last-child{
+    margin-bottom: 0;
+}
+.triggers__item-title{
+    font-weight: 500;
+    font-size: 16px;
+    color: #222;
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+.triggers__item-text{
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.3;
+    color: #717171;
+}
+
+.description__translate-block{
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.description__translate-text{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #222;
+
+    position: relative;
+    padding-left: 26px;
+}
+
+.description__translate-text::before{
+    content: url('../images/info-block/description-icons/translate-icon.svg');
+    position: absolute;
+
+    width: 16px;
+    height: 16px;
+
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+}
+
+.description__translate-button{
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    color: #222;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.description__content-text{
+    font-weight: 300;
+    color: #222;
+    font-size: 16px;
+    line-height: 1.3;
+
+    max-width: 540px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+.description__content-button{
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    color: #222;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.description__content-button-text{
+    margin-right: 5px;
+}
+
+
+.conditions__title{
+    margin-bottom: 20px;
+}
+.conditions__items{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 400px;
+    grid-gap: 0 20px;
+}
+.conditions__item{
+    max-width: 250px;
+    width: 100%;
+    min-height: 160px;
+
+    padding: 24px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 10px;
+}
+
+.conditions__item-icon{
+    margin-bottom: 16px;
+}
+.conditions__item-title{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #222;
+    margin-bottom: 8px;
+}
+.conditions__item-text{
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.3;
+    color: #222;
+}
+
+
+
+.conveniences__title{
+    margin-bottom: 20px;
+}
+
+.conveniences__items{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0 30px;
+}
+
+.conveniences__item{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.conveniences__item-icon{
+    margin-right: 12px;
+}
+
+.conveniences__item-text{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.2;   
+    color: #222;
+    max-width: 190px;
+}
+
+.conveniences__button{
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    color: #222;
+
+    border: 1px solid #000;
+    border-radius: 10px ;
+    padding: 13px 23px;
+    background: transparent;
+    cursor: pointer;
+
+    margin-top: 20px;
+}
+
+
+.date__title{
+    margin-bottom: 10px;
+}
+
+.date__subtitle{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+
+    margin-bottom: 20px;
+}
+
+
+.rented-house__info-aside{
+    max-width: 340px;
+    width: 100%;
+
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    background: #fff;
+    z-index: 3;
+
+    position: sticky;
+    top: 70px;
+    right: 0;
+
+}
+
+.rented-house__info-aside-inner{
+    padding: 24px;
+}
+
+
+
+
+
+
+.checking-dates__top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+}
+
+.checking-dates__price{
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #222;
+}
+
+.checking-dates__price span{
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.checking-dates__values{
+    display: flex;
+    align-items: center;
+}
+
+.checking-dates__rating{
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    padding-right: 6px;
+    margin-right: 5px;
+}
+
+.checking-dates__rating::after{
+    display: block;
+    content: '';
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+    background: #000;
+
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+
+.checking-dates__rating-icon{
+    margin-right: 4px;
+}
+
+.checking-dates__rating-icon svg path{
+    fill: #ff385c;
+}
+
+.checking-dates__rating-num{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #222;
+}
+
+.checking-dates__reviews-button{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #222;
+    text-decoration: underline;
+}
+
+
+.checking-dates__details{
+    border: 0.5px solid #717171;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.checking-dates__dates{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-bottom: 0.5px solid #717171;
+}
+
+.checking-dates__date-wrap{
+    position: relative;
+    padding: 26px 12px 10px;
+}
+
+.checking-dates__date-wrap::before{
+    position: absolute;
+    top: 10px;
+    left: 12px;
+
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #222;
+}
+
+.checking-dates__date-wrap:nth-child(1)::before{
+    content: 'Прибытие';
+}
+
+.checking-dates__date-wrap:nth-child(2)::before{
+    content: 'Отъезд';
+}
+
+.checking-dates__date-wrap:nth-child(1){
+    border-right: 0.5px solid #717171;
+}
+
+
+
+
+/* checking dates calendar */
+.checking-dates__calendar{
+    position: absolute;
+    top: 55px;
+    right: 0;
+    z-index: 2;
+
+    padding: 24px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    background: #fff;
+    border-radius: 15px;
+
+    display: none;
+}
+
+.checking-dates__arrival-calendar {
+    right: -1px;
+}
+
+.checking-dates__leave-calendar{
+    right: -1px;
+}
+
+.checking-dates__calendar .date__calendar-button{
+    position: absolute;
+    top: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.checking-dates__calendar .date__calendar-left-button{
+    left: 25px;
+}
+
+.checking-dates__calendar .date__calendar-right-button{
+    right: 25px;
+}
+
+.date__calendar-close-button{
+    border: none;
+    padding: 8px 14px;
+    background: #000;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 12px;
+
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #fff;
+}
+/*  */
+
+
+
+
+.checking-dates__date{
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #717171;
+
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 0;
+}
+
+.checking-dates__select{
+    position: relative;
+}
+
+.checking-dates__select-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+    padding: 26px 12px 10px;
+    cursor: pointer;
+}
+
+.checking-dates__select-wrap.active .checking-dates__select-arrow{
+    transform: rotate(180deg);
+}
+
+.checking-dates__select-wrap::before{
+    content: 'Гостей';
+    position: absolute;
+    top: 10px;
+    left: 12px;
+
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #222;
+}
+
+.checking-dates__select-value{
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #222;
+}
+
+
+
+.checking-dates__select-items{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 100%;
+    left: -1px;
+    right: 0;
+    width: 101%;
+    
+    background: #fff;
+    border-radius: 4px;
+    padding: 16px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 2px 6px, rgb(0 0 0 / 7%) 0px 0px 0px 1px;
+}
+.checking-dates__select-items.visible{
+    display: block;
+}
+
+.checking-dates__select-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+}
+
+.checking-dates__select-item:last-child{
+    margin-bottom: 0;
+}
+
+.checking-dates__select-title{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #222;
+
+    margin-bottom: 5px;
+}
+
+.checking-dates__select-subtitle{
+    max-width: 160px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #222;
+}
+
+.checking-dates__select-subtitle-link{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #222;
+    text-decoration: underline;
+}
+
+.checking-dates__select-buttons{
+    display: flex;
+    align-items: center;
+}
+
+.checking-dates__select-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+    background: transparent;
+    border: 0.5px solid #222;
+    padding: 0;
+    cursor: pointer;
+}
+
+.checking-dates__select-button.disabled{
+    border-color: #a1a1a1;
+    cursor: default;
+}
+
+.checking-dates__select-val{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #222;
+    margin: 0 10px;
+}
+
+.checking-dates__select-text{
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #222;
+
+    margin-bottom: 16px;
+}
+
+.checking-dates__select-button-wrap{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.checking-dates__select-close-button{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #222;
+    text-decoration: underline;
+}
+
+
+.checking-dates__button{
+    display: block;
+    width: 100%;
+    height: 48px;
+
+    background: #ff385c;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+}
+
+.checking-dates__payment{
+    margin-top: 30px;
+}
+
+.checking-dates__payment-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 15px;
+    border-bottom: 0.5px solid #bdbdbd;
+}
+
+.checking-dates__payment-item:last-child{
+    padding-top: 15px;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.checking-dates__payment-calc{
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #222;
+}
+
+.checking-dates__payment-calc-text{
+    text-decoration: underline;
+}
+
+.checking-dates__payment-total{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #222;
+}
+
+/* rented house reviews block */
+.reviews-details{
+    margin-bottom: 40px;
+}
+.reviews-details__values{
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.reviews-details__rating{
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    padding-right: 5px;
+    margin-right: 5px;
+}
+
+.reviews-details__rating::after{
+    display: block;
+
+    content: '';
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+    background: #000;
+
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+
+.reviews-details__rating-icon{
+    margin-right: 8px;
+}
+
+.reviews-details__rating-icon svg path{
+    fill: #ff385c;
+}
+
+.reviews-details__items{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px 30px;
+    align-items: flex-start;
+}
+
+.reviews-details__item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 370px;
+    width: 100%;
+}
+
+
+.reviews-details__item-text{
+    font-size: 16px;
+    line-height: 1.2;
+    color: #222;
+    font-weight: 300;
+}
+
+
+.reviews-details__graph{
+    display: flex;
+    align-items: center;
+}
+
+.reviews-details__graph-line{
+    width: 120px;
+    height: 4px;
+    border-radius: 5px;
+    background: #000;
+}
+
+.reviews-details__graph-value{
+    margin-left: 5px;
+
+    font-size: 12px;
+    line-height: 1.2;
+    color: #222;
+    font-weight: 500;
+}
+
+
+
+.reviews__items{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px 30px;
+    align-items: flex-start;
+
+    margin-bottom: 30px;
+}
+
+.reviews__item{
+    max-width: 460px;
+    width: 100%;
+}
+
+.reviews__item-sender{
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.reviews__sender-image{
+    width: 56px;
+    height: 56px;
+    margin-right: 15px;
+}
+
+.reviews__sender-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.reviews__sender-name{
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+    margin-bottom: 2px;
+}
+
+.reviews__sender-date{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+}
+
+.reviews__item-text{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #222;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    max-width: 400px;
+}
+
+.reviews__item-button{
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    color: #222;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+
+    margin-top: 15px;
+}
+
+.reviews__button-text{
+    margin-right: 5px;
+}
+
+.reviews__button{
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    color: #222;
+
+    border: 1px solid #000;
+    border-radius: 10px ;
+    padding: 13px 23px;
+    background: transparent;
+    cursor: pointer;
+}
+
+
+
+.rented-house__location-map{
+    width: 100%;
+    padding-top: 40%;
+    background: grey;
+}
+
+.rented-house__location-content-wrap{
+    margin-top: 25px;
+}
+
+.rented-house__location-content{
+    margin-bottom: 15px;
+}
+.rented-house__location-title{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #222;
+
+    margin-bottom: 15px;
+}
+.rented-house__location-text{
+    font-size: 16px;
+    line-height: 1.2;
+    color: #222;
+    font-weight: 300;
+
+    max-width: 860px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.rented-house__location-button{
+    display: flex;
+    align-items: center;
+
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #222;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.rented-house__location-button-text{
+    margin-right: 8px;
+}
+
+
+/* rented house owner styles */
+.rented-house__owner-items{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0 40px;
+    align-items: flex-end;
+}
+
+.rented-house__owner-block{
+    margin-bottom: 25px;
+}
+
+.rented-house__owner-info{
+    display: flex;
+    align-items: center;
+}
+
+.rented-house__owner-image{
+    width: 56px;
+    height: 56px;
+    margin-right: 15px;
+}
+
+.rented-house__owner-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.rented-house__owner-name{
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+    margin-bottom: 3px;
+}
+
+.rented-house__owner-regdate{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+}
+
+.rented-house__owner-rewards{
+    display: grid;
+    grid-template-columns: 30% 45%;
+    grid-gap: 10px 0;
+}
+
+.rented-house__owner-reward{
+    display: flex;
+    align-items: center;
+}
+
+
+.rented-house__owner-reward-icon{
+    margin-right: 8px;
+}
+
+.rented-house__owner-reward-icon svg path {
+    fill: #ff385c;
+}
+
+.rented-house__owner-reward-text{
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+}
+
+.rented-house__owner-desc-content{
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+}
+
+.rented-house__owner-details-item{
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+.rented-house__owner-details-item:last-child{
+    margin-bottom: 0;
+}
+
+.rented-house__owner-button{
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+
+    border: none;
+    border-radius: 10px ;
+    padding: 13px 23px;
+    background: #ff385c;
+    cursor: pointer;
+}
+
+/* rented house important info styles */
+.rented-house__notices-title{
+    margin-bottom: 20px;
+}
+.rented-house__notices-blocks{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0 30px;
+    align-items: flex-start;
+}
+
+.rented-house__notices-block-title{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #222;
+
+    margin-bottom: 15px;
+}
+
+.rented-house__notices-items{
+    margin-bottom: 20px;
+}
+
+.rented-house__notices-item{
+    max-width: 280px;
+    width: 100%;
+    
+    display: flex;
+    align-items: flex-start;
+
+    margin-bottom: 10px;
+
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+}
+
+.rented-house__notices-item:last-child{
+    margin-bottom: 0;
+}
+
+.rented-house__notices-item-icon{
+    margin-right: 8px;
+}
+
+.rented-house__notices-button{
+    display: flex;
+    align-items: center;
+
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    color: #222;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.rented-house__notices-button-text{
+    margin-right: 4px;
+}
+
+
+/* footer styles */
+.footer{
+    padding: 50px 0;
+    border-top: 1px solid rgb(221, 221, 221);
+    background-color: rgb(247, 247, 247);
+}
+
+.footer__top-block{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0 40px;
+
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.footer__block-title{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    margin-bottom: 15px;
+}
+
+.footer__block-list-item{
+    margin-bottom: 15px;
+}
+
+.footer__block-list-item:last-child{
+    margin-bottom: 0;
+}
+
+.footer__block-list-link{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+    border-bottom: 1px solid transparent;
+}
+
+.footer__block-list-link:hover{
+    border-color: #000;
+}
+
+.footer__bottom-block{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+}
+
+.footer__details{
+    display: flex;
+    align-items: center;
+}
+
+.footer__details-item{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+
+
+    position: relative;
+    padding-right: 7px;
+    margin-right: 5px;
+}
+
+.footer__details-item::after{
+    display: block;
+    content: '';
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: #000;
+
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+
+.footer__details-item:last-child::after{
+    display: none;
+}
+
+.footer__details-item-link{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+    border-bottom: 1px solid transparent;
+}
+
+.footer__details-item-link:hover{
+    border-color: #222;
+}
+
+
+.footer__manage-buttons{
+    display: flex;
+    align-items: center;
+}
+
+.footer__manage-button{
+    display: flex;
+    align-items: center;
+
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    color: #222;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+
+    margin-right: 20px;
+}
+
+.footer__manage-button:last-child{
+    margin-right: 0;
+}
+
+.footer__manage-button-icon{
+    margin-right: 8px;
+}
+
+.footer__social-links{
+    display: flex;
+    align-items: center;
+}
+
+.footer__social-link{
+    margin-right: 30px;
+}
+
+.footer__social-link:last-child{
+    margin-right: 0;
+}
+
+.footer__social-link svg path{
+    fill: #000;
+}
+
+.footer__block-list-item{
+    font-size: 0;
+}
+
+
+
+
+
+/* swiper styles */
+.reviews__items.swiper-wrapper,
+.rented-house__gallery-items.swiper-wrapper{
+    display: grid !important;
+}
+
+.swiper-slide{
+    box-sizing: border-box;
+}
+
+.swiper-pagination-fraction{
+    width: 60px !important;
+
+    left: auto !important;
+    right: 10px !important;
+
+    padding: 4px;
+    background:rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+
+    font-size: 14px;
+    color: #fff;
+}
+
+/*  */
+
+
+
+/* gallery modal */
+.gallery-modal{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    z-index: 12;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow-y: scroll;
+
+    background: #fff;
+
+    transform: translateY(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s ease;
+}
+
+.gallery-modal.visible{
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition: all .4s ease;
+}
+
+.gallery-modal__container{
+    padding: 0 15px;
+}
+
+.gallery-modal__panel{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 24px 0;
+}
+
+.gallery-modal__button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+
+    font-style: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+.gallery-modal__manage-buttons{
+    display: flex;
+    align-items: center;
+}
+
+.gallery-modal__button{
+    margin-right: 20px;
+}
+
+.gallery-modal__button:last-child{
+    margin-right: 0;
+}
+
+.gallery-modal__manage-button-icon{
+    margin-right: 8px;
+}
+
+
+.gallery-modal__content{
+    padding: 20px 0 100px;
+}
+
+.gallery-modal__items{
+    max-width: 740px;
+    width: 100%;
+    margin: 0 auto;
+    
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 8px;
+}
+
+.gallery-modal__item{
+    height: 260px;
+    width: 100%;
+}
+
+.gallery-modal__item:nth-child(1){
+    height: 320px;
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery-modal__item:nth-child(4){
+    height: 320px;
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery-modal__item:nth-child(7){
+    height: 320px;
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+
+.gallery-modal__item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/*  */
+
+
+
+
+
+/* common modal styles */
+.overlay{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+
+    z-index: 99;
+
+    width: 100%;
+    height: 100vh;
+
+    background: rgb(0 0 0 / 20%);
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s ease;
+}
+
+.overlay.visible{
+    opacity: 1;
+    visibility: visible;
+    transition: all .4s ease;
+}
+
+.modal{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 100;
+
+    max-height: 600px;
+
+    background: #fff;
+    border-radius: 15px;
+
+    visibility: hidden;
+}
+
+.modal.visible{
+    visibility: visible;
+    transition: all .6s ease;
+}
+/*  */
+
+/* reviews modal */
+.reviews-modal{
+    max-width: 1040px;
+    width: 100%;
+}
+
+.reviews-modal__top{
+    padding: 24px;
+}
+
+.reviews-modal__close-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.reviews-modal__content{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.reviews-modal__details{
+    max-width: 400px;
+    width: 100%;
+    padding: 24px;
+}
+
+.reviews-modal__details-top{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.reviews-modal__rating{
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding-right: 7px;
+    margin-right: 7px;
+}
+
+.reviews-modal__rating::after{
+    content: '';
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+
+    border-radius: 50%;
+    background: #222;
+}
+
+.reviews-modal__rating-icon svg path{
+    fill: #ff385c;
+}
+
+.reviews-modal__rating-text{
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    margin-left: 8px;
+}
+
+.reviews-modal__reviews-amount{
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+}
+
+.reviews-modal__details-items.bottom{
+    display: none;
+}
+
+.reviews-modal__search-form.top{
+    display: none;
+}
+
+.reviews-modal__details-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.reviews-modal__details-item:last-child{
+    margin-bottom: 0;
+}
+
+.reviews-modal__details-text{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+}
+
+.reviews-modal__details-graph{
+    display: flex;
+    align-items: center;
+}
+
+.reviews-modal__details-graph-line{
+    width: 100px;
+    height: 4px;
+    background: #222;
+    border-radius: 5px;
+}
+
+.reviews-modal__details-graph-val{
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    margin-left: 10px;
+}
+
+
+.reviews-modal__reviews-wrap{
+    max-height: 500px;
+    overflow-y: scroll;
+    padding: 24px;
+    width: 100%;
+}
+
+.reviews-modal__search-form{
+    margin-bottom: 30px;
+}
+
+.reviews-modal__input-wrap{
+    position: relative;
+    width: 100%;
+}
+
+.reviews-modal__search-input{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+
+    width: 100%;
+    outline: none;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 20px;
+    padding: 12px 12px 12px 40px;
+}
+
+.reviews-modal__search-icon{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+}
+
+.reviews-modal__review-container{
+    display: none;
+    margin-top: 60px;
+}
+
+.reviews-modal__review-container.visible{
+    display: block;
+}
+
+
+
+.reviews-modal__review-container:first-child{
+    margin-bottom: 0;
+}
+
+.reviews-modal__review-author{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.reviews-modal__review-author-image{
+    width: 56px;
+    height: 56px;
+    margin-right: 15px;
+}
+
+.reviews-modal__review-author-image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.reviews-modal__review-author-name{
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+    margin-bottom: 3px;
+}
+
+.reviews-modal__review-date{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+}
+
+.reviews-modal__review-text{
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 300;
+    color: #222;
+}
+
+.reviews-modal__loadmore-button-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 30px;
+}
+
+.reviews-modal__loadmore-button{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    background: transparent;
+    border: 1px solid #000;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+
+
+/* conveniences modal styles */
+.conveniences-modal{
+    max-width: 780px;
+    width: 100%;
+}
+
+.conveniences-modal__top{
+    padding: 24px;
+}
+
+.conveniences-modal__close-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.conveniences-modal__content{
+    max-height: 536px;
+    overflow-y: scroll;
+    padding: 24px;
+}
+
+.conveniences-modal__title{
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    margin-bottom: 30px;
+}
+
+.conveniences-modal__block{
+    margin-bottom: 60px;
+}
+
+.conveniences-modal__block:last-child{
+    margin-bottom: 0;
+}
+
+.conveniences-modal__block-title{
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    margin-bottom: 30px;
+}
+
+.conveniences-modal__block-item{
+    display: flex;
+    align-items: flex-start;
+
+    padding: 24px 0;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.conveniences-modal__block-item:first-child{
+    padding-top: 0;
+}
+
+.conveniences-modal__block-item.not-included{
+    text-decoration: line-through;
+}
+
+.conveniences-modal__block-item-icon{
+    margin-right: 10px;
+}
+
+.conveniences-modal__block-item-title{
+    font-size: 14px;
+    line-height: 1.2;
+    color: #222;
+    font-weight: 300;
+}
+.conveniences-modal__block-item-subtitle{
+    font-size: 14px;
+    line-height: 1.2;
+    color: #717171;
+    font-weight: 300;
+
+    margin-top: 5px;
+}
+
+
+
+/* desc modal styles */
+.description-modal{
+    max-width: 780px;
+    width: 100%;
+}
+
+.description-modal__top{
+    padding: 24px;
+}
+
+.description-modal__close-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.description-modal__content{
+    padding: 12px 24px 48px;
+}
+
+.description-modal__title{
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    margin-bottom: 25px;
+}
+
+.description-modal__text-block{
+    margin-bottom: 25px;
+}
+
+.description-modal__text{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+
+}
+
+.description-modal__details-item{
+    margin-bottom: 25px;
+}
+
+.description-modal__details-item:last-child{
+    margin-bottom: 0;
+}
+
+.description-modal__details-title{
+    font-size: 14px;
+    line-height: 1.2;
+    color: #222;
+    font-weight: 500;
+
+    margin-bottom: 5px;
+}
+
+.description-modal__details-text{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+}
+/*  */
+
+
+
+/* contacts modal styles */
+.contacts-modal{
+    max-width: 780px;
+    width: 100%;
+}
+
+.contacts-modal__top{
+    padding: 24px;
+}
+
+.contacts-modal__close-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.contacts-modal__content{
+    padding: 24px 24px 48px;
+}
+
+.contacts-modal__item{
+    padding: 24px 0;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.contacts-modal__item:first-child{
+    padding-top: 0;
+}
+
+.contacts-modal__item:last-child{
+    padding-bottom: 0;
+    border: none;
+}
+
+.contacts-modal__title{
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    margin-bottom: 40px;
+}
+
+.contacts-modal__item-content{
+    display: flex;
+    align-items: center;
+}
+
+.contacts-modal__item-title{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    margin-right: 30px;
+    min-width: 160px;
+}
+
+.contacts-modal__item-text{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+}
+
+
+
+/* calendar styles */
+.date__calendar-wrap.main{
+    position: relative;
+}
+
+.date__calendar-items{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0 40px;
+    min-height: 320px;
+}
+
+.date__calendar-item{
+    display: none;
+}
+
+.date__calendar-item.active{
+    display: block;
+}
+
+.date__calendar-month{
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.date__calendar-days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 0 10px;
+    margin-bottom: 20px;
+}
+
+.date__calendar-day{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    margin: 0 auto;
+
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #717171;
+}
+
+.date__calendar-numbers{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+}
+
+.date__calendar-number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    width: 32px;
+    height: 32px;
+
+    margin: 0 auto;
+
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid transparent;
+}
+
+.date__calendar-number:hover{
+    border-color: #222;
+}
+
+.date__calendar-number.disabled{
+    cursor: default;
+}
+
+.date__calendar-number.disabled:hover{
+    border: none;
+}
+
+.date__calendar-number.rented{
+    text-decoration: line-through;
+    color: #717171;
+    cursor: default;
+}
+
+.date__calendar-number.rented:hover{
+    border: none;
+}
+
+.date__calendar-number.checked{
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: default;
+}
+
+.date__calendar-reset{
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 20px;
+}
+
+.date__calendar-reset-button{
+    border: none;
+    padding: 0;
+    background: transparent;
+
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.date__calendar-wrap.main .date__calendar-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    padding: 0;
+    background: transparent;
+
+    position: absolute;
+    top: 3px;
+    cursor: pointer;
+}
+
+
+.date__calendar-wrap.main .date__calendar-left-button{
+    left: 5px;
+}
+
+.date__calendar-wrap.main .date__calendar-right-button{
+    right: 5px;
+}
+
+
+
+/* checking dates modal styles */
+.checking-dates__common-info{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 14;
+
+    width: 100%;
+
+    padding: 16px;
+    background: #fff;
+    border-top: 1px solid rgb(221, 221, 221);
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+
+    visibility: visible;
+    transform: translateY(0);
+    transition: transform .4s ease;
+}
+
+.checking-dates__common-info.hide{
+    visibility: hidden;
+    transform: translateY(100%);
+    transition: all .4s ease;
+}
+
+.dates-modal{
+    max-height: 900px;
+    width: 100%;
+
+    bottom: 0;
+    top: auto;
+
+    transform: translate(-50%, 100%);
+
+    border-radius: 15px 15px 0 0;
+}
+
+.dates-modal.visible{
+    transform: translate(-50%, 0);
+}
+
+.dates-modal__top{
+    background: #fff;
+    padding: 24px;
+    border-radius: 15px 15px 0 0;
+}
+
+.dates-modal__buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dates-modal__button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.dates-modal__reset-button{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+    text-decoration: underline;
+}
+
+.dates-modal__content{
+    padding: 0 0 18px 24px;
+}
+
+.dates-modal__title{
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    margin-bottom: 5px;
+}
+
+.dates-modal__subtitle{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #717171;
+
+    margin-bottom: 25px;
+}
+
+.dates-modal__calendar{
+    max-height: 570px;
+    overflow-y: scroll;
+    padding-right: 24px;
+}
+
+.dates-modal__calendar-buttons{
+    display: none;
+}
+
+.dates-modal__calendar-item{
+    margin-bottom: 30px;
+}
+.dates-modal__calendar-item:last-child{
+    margin-bottom: 0;
+}
+
+.dates-modal__calendar .date__calendar-month{
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.date__calendar-load-button-wrap{
+    margin-top: 30px;
+}
+
+.date__calendar-load-button{
+    display: block;
+    width: 100%;
+
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid #222;
+    background: transparent;
+    border-radius: 10px;
+}
+
+.dates-modal__common-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 24px;
+    background: #fff;
+    border-top: 1px solid rgb(221, 221, 221);
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+}
+
+.dates-modal__price{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+
+    margin-bottom: 3px;
+}
+.dates-modal__price span{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.dates-modal__rating{
+    display: flex;
+    align-items: center;
+
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+}
+
+.dates-modal__rating-icon{
+    margin-right: 4px;
+}
+
+.dates-modal__rating-icon svg path{
+    fill: #ff385c;
+}
+
+.dates-modal__save-button{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #fff;
+
+    border: none;
+    background: #000;
+    padding: 0 16px;
+    border-radius: 5px;
+    height: 44px;
+}
+
+
+
+/* reviews author styles */
+.reviews__author-reply{
+    max-width: 460px;
+    margin-left: auto;
+    margin-top: 40px;
+}
+
+.reviews__author{
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.reviews__author-image{
+    width: 56px;
+    height: 56px;
+    margin-right: 15px;
+}
+
+.reviews__author-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.reviews__author-title{
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+}
+
+.reviews__author-replay-date{
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+}
+
+.reviews__author-replay-text{
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 300;
+    color: #222;
+}
+/*  */
+
+
+
+@media(max-width: 1024px){
+    /* desc modal styles */
+    .description-modal__content{
+        padding: 0 24px 32px;
+    }
+    .description-modal__title{
+        font-size: 20px;
+    }
+    /*  */
+
+
+    /* contacts modal styles */
+    .contacts-modal__content{
+        padding: 0 24px 32px;
+    }
+
+    .contacts-modal__title{
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+
+    .contacts-modal__item{
+        padding: 20px 0;
+    }
+    /*  */
+
+    /* conv modal styles */
+    .conveniences-modal__content{
+        padding-top: 0;
+    }
+
+    .conveniences-modal__title{
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+
+    .conveniences-modal__block{
+        margin-bottom: 40px;
+    }
+
+    .conveniences-modal__block-item{
+        padding: 20px 0;
+    }
+
+    .conveniences-modal__block-title{
+        margin-bottom: 25px;
+    }
+    /*  */
+
+
+    /* calendar */
+    .date__calendar-items{
+        display: block;
+        max-width: 400px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .dates-modal__calendar-items{
+        max-width: 100%;
+    }
+    /*  */
+    
+    /* header` */
+    .header__menu-list-link{
+        font-size: 14px;
+    }
+    /*  */
+
+
+    /* rented house gallery */
+    .rented-house__gallery-items{
+        min-height: 410px;
+    }
+    /*  */
+
+
+    /* rented house info */
+    .common-info__title{
+        max-width: 330px;
+    }
+    .common-info__item{
+        margin-right: 5px;
+        padding-right: 7px;
+    }
+    .rented-house__details-block{
+        padding: 30px 0;
+    }
+
+    .common-info__item,
+    .description__translate-button,
+    .description__translate-text,
+    .description__content-text,
+    .description__content-button,
+    .conveniences__item-text,
+    .conveniences__button,
+    .checking-dates__select-title,
+    .checking-dates__select-val,
+    .checking-dates__button{
+        font-size: 14px;
+        line-height: 1.2;
+    }
+
+    .description__translate-block{
+        margin-bottom: 20px;
+    }
+
+    .description__content-button-text{
+        padding-bottom: 4px;
+    }
+
+    .conveniences__button{
+        margin-top: 15px;
+    }
+
+    .checking-dates__select-title{
+        margin-bottom: 2px;
+    }
+
+    .checking-dates__select-button{
+        width: 28px;
+        height: 28px;
+    }
+
+    .checking-dates__button{
+        height: 44px;
+    }
+
+    .description__translate-block{
+        display: block;
+    }
+
+    .description__translate-button{
+        margin-left: 27px;
+    }
+    /*  */
+
+
+    /* rented house reviews */
+
+    .reviews__author-reply{
+        margin-left: 50px;
+        max-width: 100%;
+    }
+
+    .reviews__author-replay-text{
+        font-size: 14px;
+    }
+
+    .reviews-details__item-text{
+        font-size: 14px;
+    }
+
+    .reviews__items{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .reviews__item{
+        max-width: 100%;
+    }
+
+    .reviews__item-button{
+        font-size: 14px;
+    }
+
+    .reviews__button-text{
+        padding-bottom: 4px;
+    }
+
+    .reviews__item-text{
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    .reviews__button{
+        font-size: 14px;
+    }
+    /*  */
+
+
+    /* rented house location */
+    .rented-house__location-button{
+        font-size: 14px;
+    }
+
+    .rented-house__location-text{
+        font-size: 14px;
+    }
+
+    .rented-house__location-button-text{
+        padding-bottom: 3px;
+    }
+    /*  */
+
+    
+
+
+    /* rented house owner */
+    .rented-house__owner-rewards{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .rented-house__owner-desc-content,
+    .rented-house__owner-details-item,
+    .rented-house__owner-reward-text{
+        font-size: 14px;
+    }
+
+    
+    .rented-house__owner-details-item{
+        margin-bottom: 10px;
+    }
+    
+    .rented-house__owner-button{
+        font-size: 14px;
+    }
+    /*  */
+
+
+    /* rented house notices */
+    .rented-house__notices-item{
+        max-width: 210px;
+        font-size: 14px;
+    }
+
+    .rented-house__notices-button{
+        font-size: 14px;
+    }
+    /*  */
+
+
+    /* footer */
+    .footer{
+        padding: 40px 0;
+    }
+
+    .footer__top-block{
+        display: block;
+    }
+
+    .footer__block{
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgb(221, 221, 221);
+    }
+
+    .footer__block:last-child{
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .footer__bottom-block{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer__details{
+        order: 1;
+        flex-wrap: wrap;
+    }
+
+    .footer__details-item{
+        margin-bottom: 10px;
+    }
+
+    .footer__details-item:last-child{
+        margin-bottom: 10px;
+    }
+
+    .footer__manage-button{
+        font-size: 14px;
+    }
+
+    .footer__social-links{
+        margin: 25px 0;
+    }
+    /*  */
+
+
+
+    /* reviews modal */
+    .reviews-modal{
+        max-height: 740px;
+    }
+
+    .reviews-modal__content{
+        flex-direction: column;
+    }
+
+    .reviews-modal__details{
+        padding-top: 0;
+        max-width: 100%;
+    }
+
+    .reviews-modal__details-top{
+        margin-bottom: 20px;
+    }
+
+    .reviews-modal__details-item{
+        margin-bottom: 0;
+    }
+
+    .reviews-modal__search-form.top{
+        display: block;
+        margin-bottom: 0;
+    }
+
+    .reviews-modal__details-items.bottom{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px 30px;
+
+        margin-bottom: 40px;
+    }
+
+    .reviews-modal__details-items.top,
+    .reviews-modal__search-form.bottom{
+        display: none;
+    }
+
+    .reviews-modal__reviews-wrap{
+        padding-top: 0;
+    }
+
+    .reviews-modal__review-author-image{
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+
+    .reviews-modal__review{
+        margin-bottom: 40px;
+    }
+
+    .reviews-modal__review-text{
+        line-height: 1.4;
+    }
+
+    .reviews-modal__rating-text,
+    .reviews-modal__reviews-amount{
+        font-size: 20px;
+    }
+    /*  */
+}
+
+@media(max-width: 768px){
+    /* checking dates calendar */
+    .checking-dates__calendar{
+        width: 100%;
+    }
+
+    .checking-dates__arrive-calendar{
+        right: 2px;
+    }
+
+
+    /*  */
+
+    /* desc modal styles */
+    .description-modal__title{
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .description-modal__text-block{
+        margin-bottom: 20px;
+    }
+
+    .description-modal__details-item{
+        margin-bottom: 20px;
+    }
+
+    .description-modal__content{
+        padding: 0 20px 30px;
+    }
+    /*  */
+
+
+    /* header */
+    .header{
+        padding: 20px 0;
+    }
+    .header__menu{
+        display: none;
+    }
+
+    .header__inner{
+        display: block;
+    }
+
+    .header__manage-block{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .header__return-button{
+        display: flex;
+        align-items: center;
+
+        border: none;
+        padding: 0;
+        background: transparent;
+    }
+
+    .header__return-button-icon{
+        margin-right: 8px;
+    }
+
+    .header__manage-buttons{
+        display: flex;
+        align-items: center;
+    }
+
+    .header__manage-button{
+        border: none;
+        padding: 0;
+        background: transparent;
+
+        margin-right: 20px;
+    }
+
+    .header__manage-button:last-child{
+        margin-right: 0;
+    }
+    /*  */
+
+
+    /* rented house galler */
+    .rented-house__main-title{
+        font-size: 24px;
+    }
+    
+    .gallery-details__manage-button-icon{
+        margin-right: 0;
+    }
+
+    .gallery-details__manage-button-text{
+        display: none;
+    }
+
+
+    .rented-house__gallery-items{
+        min-height: auto;
+        display: block;
+        grid-gap: 0;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .rented-house__gallery-items.swiper-wrapper{
+        display: flex !important;
+    }
+    
+    .rented-house__gallery-item:nth-child(1){
+        grid-column: unset;
+        grid-row: unset;
+    }
+
+    .rented-house__gallery-item{
+        width: 100%;
+        min-height: 340px;
+    }
+
+    .rented-house__gallery-item::before{
+        display: none;
+    }
+
+    .rented-house__gallery-item:nth-child(1) img{
+        border-radius: 0;
+    }
+    
+    .rented-house__gallery-item:nth-child(3) img{
+        border-radius: 0;
+    }
+    
+    .rented-house__gallery-item:nth-child(5) img{
+        border-radius: 0;
+    }
+
+    .gallery-details__items{
+        margin-right: 0;
+    }
+
+    .rented-house__gallery-button,
+    .gallery-details__manage-buttons{
+        display: none;
+    }
+    /*  */
+
+
+    /* rented house info */
+    .rented-house__info{
+        display: block;
+    }
+
+    .rented-house__details{
+        max-width: 100%;
+    }
+
+    
+
+    .conveniences__items{
+        max-width: 500px;
+    }
+
+    .rented-house__info-aside{
+        display: none;
+    }
+    
+    .common-info__image-wrap{
+        width: 50px;
+        height: 50px;
+    }
+    /*  */
+
+
+    /* rented house reviews */
+    .reviews__author-reply{
+        display: none;
+    }
+
+    .reviews-modal__author-replay{
+        display: block;
+        margin-left: 30px;
+    }
+
+    .reviews-details__items{
+        display: none;
+    }
+
+    .reviews-details{
+        margin-bottom: 30px;
+    }
+
+    .reviews-details__values{
+        margin-bottom: 0;
+    }
+
+    .reviews__items{
+        display: block;
+        grid-gap: 0 !important;
+    }
+
+    .reviews__items.swiper-wrapper{
+        display: flex !important;
+    }
+
+    .reviews__item{
+        min-height: 200px !important;
+        
+        padding: 16px;
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 5px;
+    }
+
+
+    .reviews__button{
+        display: block;
+        width: 100%;
+    }
+
+    .reviews__sender-image{
+        width: 50px;
+        height: 50px;
+    }
+    /*  */
+
+
+    /* rented house location */
+    .rented-house__location-title{
+        margin-bottom: 10px;
+    }
+    /*  */
+
+
+    /* rented house owner */
+    .rented-house__owner-items{
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 25px 0;
+    }
+
+    .rented-house__owner-image{
+        width: 50px;
+        height: 50px;
+    }
+
+    .rented-house__owner-name{
+        font-size: 20px;
+    }
+    
+    /*  */
+
+
+    /* rented house notices` */
+    .rented-house__notices-blocks{
+        grid-template-columns: 40% 40%;
+        grid-gap: 30px;
+    }
+    /*  */
+
+
+
+    /* gallery modal */
+    .gallery-modal__items{
+        max-width: 500px;
+    }
+    /*  */
+
+
+    /* reviews modal */
+    .reviews-modal{
+        height: 100vh;
+        max-height: 100%;
+    }
+
+    .reviews-modal__reviews-wrap{
+        max-height: 670px;
+    }
+
+    .reviews-modal__details-items.bottom{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    /*  */
+
+
+    /* checking dates modal styles */
+    .checking-dates__common-info{
+        display: flex;
+    }
+
+    .checking-dates__price{
+        margin-bottom: 3px;
+    }
+
+    .checking-dates__price span{
+        font-size: 18px;
+    }
+
+    .checking-dates__rating::after{
+        display: none;
+    }
+
+    .checking-dates__button{
+        margin: 0;
+        padding: 0 16px;
+        height: 40px;
+    }
+    /*  */
+
+}
+
+
+@media(max-width: 540px) {
+    /* checking dates modal/common styles */
+    .checking-dates__common-info{
+        display: block;
+    }
+
+    .checking-dates__info-wrap{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 10px;
+    }
+    /*  */
+
+    /* conv modal styles */
+    .conveniences-modal__block-item-content{
+        max-width: 210px;
+    }
+    /*  */
+
+    .rented-house__title{
+        font-size: 20px;
+    }
+
+    /* rented house gallery */
+    .rented-house__main-title{
+        font-size: 22px;
+        max-width: 300px;
+    }
+
+    .rented-house__gallery-item{
+        min-height: 260px;
+    }
+    /*  */
+
+    /* rented house info` */
+    .conveniences__items{
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 20px 0;
+    }
+
+    .conveniences__item{
+        margin-bottom: 0;
+    }
+
+    .conditions__items{
+        max-width: 100%;
+    }
+
+    .conditions__items{
+        grid-gap: 0 10px;
+    }
+
+    .conditions__item{
+        padding: 16px;
+    }
+
+    .conditions__item-title{
+        margin-bottom: 4px;
+    }
+
+    .conveniences__button{
+        margin-top: 25px;
+    }
+
+    .triggers__item{
+        padding-left: 35px;
+    }
+    /*  */
+
+    /* rented house notices` */
+    .rented-house__notices-blocks{
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 40px 0;
+    }
+
+    .rented-house__notices-items{
+        margin-bottom: 15px;
+    }
+    /*  */
+
+
+    /* gallery modal */
+    .gallery-modal__manage-button-text{
+        display: none;
+    }
+
+    .gallery-modal__manage-button-icon{
+        margin-right: 0;
+    }
+
+    .gallery-modal__content{
+        padding: 24px 0;
+    }
+    /*  */
+
+    /* contacts modal styles */
+    .contacts-modal__item-title{
+        min-width: 120px;
+        margin-right: 10px;
+    }
+}
+
+@media(max-width: 375px){
+    /* rented house info */
+    .conditions__items{
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 20px 0;
+    }
+
+    .conditions__item{
+        max-width: 100%;
+    }
+    /*  */
+
+    /* rented house owner */
+    .rented-house__owner-regdate{
+        max-width: 170px;
+    }
+    /*  */
+}
