@@ -281,6 +281,7 @@ const loadReviewsModule = function() {
 
         if (showValue >= reviews.length) {
             loadMoreButton.style.display = 'none';
+            showValue = 4;
             return 0;
         };
     };
@@ -297,6 +298,8 @@ const loadReviewsModule = function() {
 
     if (reviews.length < 4) {
         loadMoreButton.style.display = 'none';
+    } else {
+        loadMoreButton.style.display = 'block';
     }
 
     showDefaultReviews();
@@ -346,6 +349,28 @@ const modalModule = function(obj) {
         modal.classList.remove('visible');
     };
 
+    const resetReviewsModalData = function() {
+
+        const loadMoreButton = document.querySelector('.reviews-modal__loadmore-button');
+        const reviews = document.querySelectorAll('.reviews-modal__review-container');
+
+        let defaultValue = 4;
+
+        const resetReviewsData = function() {
+
+            reviews.forEach((el, index) => {
+                
+                if (index >= defaultValue) {
+                    el.classList.remove('visible');
+                };
+            });
+
+            loadMoreButton.style.display = 'block';
+        };
+
+        resetReviewsData();
+    };
+
 
     openButton.addEventListener('click', () => {
         addClasses();
@@ -355,6 +380,10 @@ const modalModule = function(obj) {
     closeButton.addEventListener('click', () => {
         removeClasses();
         setTimeout(enableScroll, 150);
+
+        if (modal.classList.contains('reviews-modal')) {
+            resetReviewsModalData();
+        };
     });
 
     overlay.addEventListener('click', () => {
