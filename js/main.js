@@ -334,28 +334,31 @@ const modalModule = function(obj) {
         header.style.paddingRight = `${0}px`;
     };
 
-
-    openButton.addEventListener('click', () => {
-
+    const addClasses = function() {
         commonInfoBlock.classList.add('hide');
         overlay.classList.add('visible');
         modal.classList.add('visible');
+    };
+
+    const removeClasses = function() {
+        commonInfoBlock.classList.remove('hide');
+        overlay.classList.remove('visible');
+        modal.classList.remove('visible');
+    };
+
+
+    openButton.addEventListener('click', () => {
+        addClasses();
         disableScroll();
     });
 
     closeButton.addEventListener('click', () => {
-
-        commonInfoBlock.classList.remove('hide');
-        overlay.classList.remove('visible');
-        modal.classList.remove('visible');
+        removeClasses();
         setTimeout(enableScroll, 150);
     });
 
     overlay.addEventListener('click', () => {
-
-        commonInfoBlock.classList.remove('hide');
-        overlay.classList.remove('visible');
-        modal.classList.remove('visible');
+        removeClasses();
         setTimeout(enableScroll, 150);
     });
 };
@@ -367,16 +370,15 @@ const selectDateModule = function() {
           leaveField = document.querySelector('.checking-dates__dates .checking-dates__leave-date'),
 
           arrivalCalendar = document.querySelector('.checking-dates__arrival-calendar');
-          leavelCalendar = document.querySelector('.checking-dates__leave-calendar');
+          leaveCalendar = document.querySelector('.checking-dates__leave-calendar');
 
           arrivalCalendarItems = document.querySelectorAll('.checking-dates__arrival-calendar .date__calendar-item');
           leaveCalendarItems = document.querySelectorAll('.checking-dates__leave-calendar .date__calendar-item');
 
-          months = [],
           calendarData = [];
 
-    let arrivalItemsCounter = 0;
-    let leaveItemsCounter = 0;
+    let arrivalItemsCounter = 1;
+    let leaveItemsCounter = 1;
 
 
     // Описание функций
@@ -384,7 +386,6 @@ const selectDateModule = function() {
 
         for (let i = 0; i < 12; i++) { 
             calendarData.push({});
-            months.push(new Date(0,i).toLocaleString({},{month:'long'}));
         };
     };
 
@@ -401,8 +402,8 @@ const selectDateModule = function() {
         if (num < 10) {
             return '0' + num;
         } else {
-            return num
-        }
+            return num;
+        };
     };
 
     const setDateValue = function(items) {
@@ -410,33 +411,49 @@ const selectDateModule = function() {
         items.forEach(item => {
 
             const dataAttributeValue = +item.getAttribute('data-month-id');
-    
+
             item.addEventListener('click', (e) => {
-    
+
                 const target = e.target;
-    
+
+                calendarData.forEach((el, index) => {
+                    if (dataAttributeValue === index + 1) {
+                        el.id = dataAttributeValue;
+                        el.year = 2022;
+                    };
+                });
+
                 if (target.classList.contains('date__calendar-number')) {
                     
                     if (target.classList.contains('disabled') || target.classList.contains('rented')) {
                         return 0;
                     } else {
     
-                        calendarData.forEach((item, index) => {
+                        calendarData.forEach((el, index) => {
+                            if (dataAttributeValue === index + 1) {
+                                el.value = target.textContent;
+                            };
 
                             if (target.closest('.arrival-calendar__item')) {
-                                
-                                if (index === dataAttributeValue) {
-                                    arrivalField.value = `${addZero(target.textContent)}.${addZero(item.id)}.${addZero(item.year)}`;
-                                    arrivalCalendar.style.display = 'none';
-                                    leavelCalendar.style.display = 'block';
-                                };
-                                
-                            } else if (target.closest('.leave-calendar__item')) {
 
-                                leaveField.value = `${addZero(target.textContent)}.${addZero(item.id)}.${addZero(item.year)}`;
-                                leavelCalendar.style.display = 'none';
+                                if (dataAttributeValue === index + 1) {
+
+                                    arrivalField.value = `${addZero(el.value)}.${addZero(el.id)}.${el.year}`;
+                                    arrivalCalendar.style.display = 'none';
+                                    leaveCalendar.style.display = 'block';
+                                };
+
+                            } else {
+                                
+                                if (dataAttributeValue === index + 1) {
+
+                                    leaveField.value = `${addZero(el.value)}.${addZero(el.id)}.${el.year}`;
+                                    arrivalCalendar.style.display = 'none';
+                                    leaveCalendar.style.display = 'none';
+                                };
                             };
                         });
+
                     };
                 };
             });
@@ -453,12 +470,6 @@ const selectDateModule = function() {
     setDateValue(arrivalCalendarItems);
     setDateValue(leaveCalendarItems);
 
-
-    calendarData.forEach((el, index) => {
-        el.id = index + 1;
-        el.month = months[index];
-        el.year = 2022;
-    });
 };
 
 
